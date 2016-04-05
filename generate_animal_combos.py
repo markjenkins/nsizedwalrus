@@ -43,11 +43,12 @@ monsters.add( (100, 'duck', 'horse') )
 # this is a list comprehension
 monsters_array_and_dict = [
     {
+        'primary_key': i,
         'base_animal': base_animal,
         'size_animal': size_animal,
         'size': size, 
     }
-    for (size, size_animal, base_animal) in monsters
+    for i, (size, size_animal, base_animal) in enumerate(monsters)
 ]
 
 print( 
