@@ -20,6 +20,7 @@ COMPONENTS_PER_MONSTER = 2
 animal_to_image_map = {
     image_file[:-len(FILE_SUFFIX_TO_STRIP)].lower() : image_file
     for image_file in listdir('wikipedia_article_images')    
+    if image_file.endswith(FILE_SUFFIX_TO_STRIP)
 }
 
 animals = animal_to_image_map.keys()
