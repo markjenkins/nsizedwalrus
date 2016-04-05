@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# this was used to generate initial_fighting_animals.json
+
 from __future__ import print_function
 
 from os import listdir
