@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2016-04-06T12:55:14Z",
+    "version": "2016-04-06T13:57:23Z",
     "title": "nsizedwalrus"
   },
   "host": "nsizedwalrus.ninja",
@@ -33,7 +33,7 @@
                 "method.response.header.Content-Type": "'text/html'"
               },
               "responseTemplates": {
-                "text/html": "<html>\n<body>\n  <div>\n    <h2>\n    $input.json('$.monster_1_size') \n    $util.parseJson( $input.json('$.monster_1_size_animal') )-sized \n    $util.parseJson( $input.json('$.monster_1_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_1_image') )\" />\n    <form action=\"/\" method=\"POST\" enctype=\"application/x-www-form-urlencoded\">\n        <input name=\"uuid\" type=\"hidden\" value=\"$util.parseJson($input.json('$.fight_uuid'))\"></input>\n        <input name=\"winner\" type=\"hidden\" value=\"$input.json('$.monster_1_id')\"></input>\n        <input type=\"submit\" value=\"Wins\"></input>\n    </form>\n  </div>\n  \n  <h1>VS.</h1>\n\n  <div>\n    <h2>\n        $input.json('$.monster_2_size')\n        $util.parseJson( $input.json('$.monster_2_size_animal') )-sized \n        $util.parseJson( $input.json('$.monster_2_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_2_image') )\" />\n    <form action=\"/\" method=\"POST\" enctype=\"application/x-www-form-urlencoded\">\n        <input name=\"uuid\" type=\"hidden\" value=\"$util.parseJson($input.json('$.fight_uuid'))\"></input>\n        <input name=\"winner\" type=\"hidden\" value=\"$input.json('$.monster_2_id')\"></input>\n        <input type=\"submit\" value=\"Wins\"></input>\n    </form>\n\n  </div>\n  \n</body>\n</html>\n\n"
+                "text/html": "<html>\n<body>\n  <div>\n    <h2>\n    $input.json('$.monster_1_size') \n    $util.parseJson( $input.json('$.monster_1_size_animal') )-sized \n    $util.parseJson( $input.json('$.monster_1_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_1_image') )\" />\n    <form action=\"/\" method=\"POST\" enctype=\"application/x-www-form-urlencoded\">\n        <input name=\"uuid\" type=\"hidden\" value=\"$util.parseJson($input.json('$.fight_uuid'))\"></input>\n        <input name=\"winner\" type=\"hidden\" value=\"$input.json('$.monster_1_id')\"></input>\n        <input type=\"submit\" value=\"Wins\"></input>\n    </form>\n  </div>\n  \n  <h1>VS.</h1>\n\n  <div>\n    <h2>\n        $input.json('$.monster_2_size')\n        $util.parseJson( $input.json('$.monster_2_size_animal') )-sized \n        $util.parseJson( $input.json('$.monster_2_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_2_image') )\" />\n    <form action=\"/\" method=\"POST\" enctype=\"application/x-www-form-urlencoded\">\n        <input name=\"uuid\" type=\"hidden\" value=\"$util.parseJson($input.json('$.fight_uuid'))\"></input>\n        <input name=\"winner\" type=\"hidden\" value=\"$input.json('$.monster_2_id')\"></input>\n        <input type=\"submit\" value=\"Wins\"></input>\n    </form>\n\n  </div>\n\n<p>\nMore about this <a href=\"https://github.com/markjenkins/nsizedwalrus/\">on GitHub</a>\n</p>\n<p>\nImages from <a href=\"https://en.wikipedia.org/wiki/List_of_animal_names\">Wikipedia</a>. <a href=\"https://raw.githubusercontent.com/markjenkins/nsizedwalrus/master/wikipedia_article_images/IMAGE_COPYING_LICENSE\">Licenses</a>\n</p>\n</body>\n</html>\n\n"
               }
             }
           },
@@ -73,118 +73,6 @@
           "type": "aws"
         }
       }
-    },
-    "/newjohn": {
-      "post": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            }
-          }
-        },
-        "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200"
-            }
-          },
-          "requestTemplates": {
-            "application/json": "{\"statusCode\": 200}"
-          },
-          "type": "mock"
-        }
-      }
-    },
-    "/test": {
-      "get": {
-        "consumes": [
-          "application/x-www-form-urlencoded",
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "uuid",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "winner",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "Empty",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response"
-          }
-        },
-        "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseTemplates": {
-                "application/json": "##  See http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html\n##  This template will pass through all parameters including path, querystring, header, stage variables, and context through to the integration endpoint via the body/payload\n#set($allParams = $input.params())\n{\n\"body-json\" : \"$input.json('$')\",\n\"params\" : {\n#foreach($type in $allParams.keySet())\n    #set($params = $allParams.get($type))\n\"$type\" : {\n    #foreach($paramName in $params.keySet())\n    \"$paramName\" : \"$util.escapeJavaScript($params.get($paramName))\"\n        #if($foreach.hasNext),#end\n    #end\n}\n    #if($foreach.hasNext),#end\n#end\n},\n\"stage-variables\" : {\n#foreach($key in $stageVariables.keySet())\n\"$key\" : \"$util.escapeJavaScript($stageVariables.get($key))\"\n    #if($foreach.hasNext),#end\n#end\n},\n\"context\" : {\n    \"account-id\" : \"$context.identity.accountId\",\n    \"api-id\" : \"$context.apiId\",\n    \"api-key\" : \"$context.identity.apiKey\",\n    \"authorizer-principal-id\" : \"$context.authorizer.principalId\",\n    \"caller\" : \"$context.identity.caller\",\n    \"cognito-authentication-provider\" : \"$context.identity.cognitoAuthenticationProvider\",\n    \"cognito-authentication-type\" : \"$context.identity.cognitoAuthenticationType\",\n    \"cognito-identity-id\" : \"$context.identity.cognitoIdentityId\",\n    \"cognito-identity-pool-id\" : \"$context.identity.cognitoIdentityPoolId\",\n    \"http-method\" : \"$context.httpMethod\",\n    \"stage\" : \"$context.stage\",\n    \"source-ip\" : \"$context.identity.sourceIp\",\n    \"user\" : \"$context.identity.user\",\n    \"user-agent\" : \"$context.identity.userAgent\",\n    \"user-arn\" : \"$context.identity.userArn\",\n    \"request-id\" : \"$context.requestId\",\n    \"resource-id\" : \"$context.resourceId\",\n    \"resource-path\" : \"$context.resourcePath\"\n    }\n}\n"
-              }
-            }
-          },
-          "requestTemplates": {
-            "application/json": "{\"statusCode\": 200}"
-          },
-          "type": "mock"
-        }
-      },
-      "post": {
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response"
-          }
-        },
-        "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200"
-            }
-          },
-          "requestTemplates": {
-            "application/x-www-form-urlencoded": "#set($rawBody = $input.body)\n#set($tokenisedAmpersand = $rawBody.split(\"&\"))\n#set($ampOne = $tokenisedAmpersand[0])\n#set($ampTwo = $tokenisedAmpersand[1])\n#set($oneSplit = $ampOne.split(\"=\") )\n#set($twoSplit = $ampTwo.split(\"=\") )\n\n\n{ \"uuidnewfre6\": \"$rawBody\",\n   \"yo\": \"$ampOne\",\n   \"go\": \"$ampTwo\",\n   \"$oneSplit[0]\": \"$oneSplit[1]\",\n   \"$twoSplit[0]\": \"$twoSplit[1]\"\n}"
-          },
-          "uri": "http://vmsrv.skullspace.ca:9999",
-          "httpMethod": "POST",
-          "type": "http"
-        }
-      }
-    }
-  },
-  "definitions": {
-    "Empty": {
-      "type": "object"
     }
   }
 }
