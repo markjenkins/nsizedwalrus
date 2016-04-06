@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2016-04-06T09:56:56Z",
+    "version": "2016-04-06T12:55:14Z",
     "title": "nsizedwalrus"
   },
   "host": "nsizedwalrus.ninja",
@@ -28,10 +28,7 @@
       },
       "post": {
         "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
+          "application/x-www-form-urlencoded"
         ],
         "responses": {
           "303": {
@@ -44,6 +41,80 @@
           }
         }
       }
+    },
+    "/newjohn": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/test": {
+      "get": {
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "winner",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Empty",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object"
     }
   }
 }
