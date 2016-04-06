@@ -36,9 +36,11 @@ def create_random_fight(event, context):
             'monster_1_size': p1['size'],
             'monster_1_size_animal': p1['size_animal'],
             'monster_1_id': p1['animal_id'],
+            'monster_1_image': p1['image'],
             'monster_2_base': p2['base_animal'],
             'monster_2_size': p2['size'],
             'monster_2_size_animal': p2['size_animal'],
             'monster_2_id': p2['animal_id'],
+            'monster_2_image': p2['image'],
             'fight_uuid': fight_uuid.hex,
         }

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2016-04-06T08:15:39Z",
+    "version": "2016-04-06T09:56:56Z",
     "title": "nsizedwalrus"
   },
   "host": "nsizedwalrus.ninja",
@@ -20,6 +20,24 @@
             "description": "200 response",
             "headers": {
               "Content-Type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "303": {
+            "description": "303 response",
+            "headers": {
+              "Location": {
                 "type": "string"
               }
             }

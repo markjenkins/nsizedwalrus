@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2016-04-06T08:15:39Z",
+    "version": "2016-04-06T09:56:56Z",
     "title": "nsizedwalrus"
   },
   "host": "nsizedwalrus.ninja",
@@ -33,13 +33,48 @@
                 "method.response.header.Content-Type": "'text/html'"
               },
               "responseTemplates": {
-                "text/html": "<html>\n<body>\n  <div>\n    <h2>\n    $input.json('$.monster_1_size') \n    $util.parseJson( $input.json('$.monster_1_size_animal') )-sized \n    $util.parseJson( $input.json('$.monster_1_base') )\n    </h2>\n  </div>\n  \n  <h1>VS.</h1>\n\n  <div>\n    <h2>\n        $input.json('$.monster_2_size')\n        $util.parseJson( $input.json('$.monster_2_size_animal') )-sized \n        $util.parseJson( $input.json('$.monster_2_base') )\n    </h2>\n  </div>\n  \n</body>\n</html>\n\n"
+                "text/html": "<html>\n<body>\n  <div>\n    <h2>\n    $input.json('$.monster_1_size') \n    $util.parseJson( $input.json('$.monster_1_size_animal') )-sized \n    $util.parseJson( $input.json('$.monster_1_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_1_image') )\" />\n  </div>\n  \n  <h1>VS.</h1>\n\n  <div>\n    <h2>\n        $input.json('$.monster_2_size')\n        $util.parseJson( $input.json('$.monster_2_size_animal') )-sized \n        $util.parseJson( $input.json('$.monster_2_base') )\n    </h2>\n    <img src=\"https://d3gst354vaga1g.cloudfront.net/$util.parseJson( $input.json('$.monster_2_image') )\" />\n  </div>\n  \n</body>\n</html>\n\n"
               }
             }
           },
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:790588625955:function:random_fight/invocations",
           "httpMethod": "POST",
           "type": "aws"
+        }
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "303": {
+            "description": "303 response",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "303",
+              "responseParameters": {
+                "method.response.header.Location": "'https://nsizedwalrus.ninja/'"
+              },
+              "responseTemplates": {
+                "application/json": "#set($inputRoot = $input.path('$'))\n{ }"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "type": "mock"
         }
       }
     }
