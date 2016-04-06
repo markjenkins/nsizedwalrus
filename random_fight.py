@@ -17,7 +17,7 @@ fights_table = dynamodb.Table('fights')
 # the full monster list with the database connection, reasonable as long as we
 # don't have too many monsters
 #
-# Wow often lambda reloads the module is an interesting question
+# How often lambda reloads the module is an interesting question
 all_monster_data = monster_table.scan()
 
 all_monsters = all_monster_data['Items']
