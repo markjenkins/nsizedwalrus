@@ -14,4 +14,4 @@ Glicko2 ratings and stress testing still to come.
 * Image scraping from Wikipedia: "Let the hacking begin". Firefox, LibreOffice, find, xargs, sed, awk, grep, bash, and wget.
 * Creation of combinations: Python's random.sample and random.choice and a set comprehension for implicit duplicate avoidance.
 
-No Javascript, pure old-school form submission with a redirect and a page load. Should run on ancient and terminal based browsers. Use of AWS API Gateway would have been much easier if I had used Javascript, but this was cooler.
+No JavaScript, pure old-school form submission with a redirect and a page load. Should run on ancient and terminal based browsers. Use of AWS API Gateway would have been much easier if I had used JavaScript, but this was cooler.
