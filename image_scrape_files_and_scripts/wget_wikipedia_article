@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wget http://en.wikipedia.org/wiki/$1
