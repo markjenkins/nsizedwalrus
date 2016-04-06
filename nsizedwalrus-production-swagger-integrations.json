@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2016-04-06T06:48:56Z",
+    "version": "2016-04-06T08:15:39Z",
     "title": "nsizedwalrus"
   },
-  "host": "x97p4wedfe.execute-api.us-west-2.amazonaws.com",
-  "basePath": "/production",
+  "host": "nsizedwalrus.ninja",
+  "basePath": "/(none)",
   "schemes": [
     "https"
   ],
